@@ -13,13 +13,23 @@
  <div class="container">
    <div id="question-container" class="hide">
        <div id="question">Question</div>
-    <div id="answer-button" class="btn-grid">
-        <button class="btn">Answer 1</button>
-        <button class="btn">Answer 2</button>
-        <button class="btn">Answer 3</button>
-        <button class="btn">Answer 4</button>
+       <div id="timer">
+         <div id="counter"></div>
+         <div id="btimeGauge"></div>
+         <div id="timeGauge"></div>
+       </div>
+    <div id="answer-choices">
+        <div class="choice" id="A"
+        onclick="checkAnswer('A')"></div>
+        <div class="choice" id="B"
+        onclick="checkAnswer('B')"></div>
+        <div class="choice" id="C"
+        onclick="checkAnswer('C')"></div>
+        <div class="choice" id="D"
+        onclick="checkAnswer('D')"></div>  
      </div>
- </div>   
+ </div> 
+ <div id="score" style="display: none"></div>
 <div class="controls">
     <button id="start-btn" class="start-btn btn">Start</button>
     <button id="next-btn" class="next-btn btn hide">Next</button>

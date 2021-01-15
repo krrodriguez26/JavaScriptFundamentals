@@ -12,71 +12,49 @@ var counter = document.getElementById("counter");
 var timeGauge = document.getElementById("timeGauge");
 var scoreDiv = document.getElementById("score");
 
-var shuffledQuestions, currentQuestionIndex 
 
-startButton.addEventListener('click', startQuiz)
-nextButton.addEventListener('click', () => {
-    currentQuestionIndex++
-    setNextQuestion()
-})
+startButton.addEventListener("click", startQuiz);
 
-function startQuiz() { 
- startButton.classList.add('hide')
- shuffledQuestions = questions.sort(() => Math.random() - .5)
- currentQuestionIndex = 0
- questionContainerElement.classList.remove('hide')
- setNextQuestion()
+// Start quiz
+   function startQuiz(){
+    startButton.style.display = "none";
+    renderQuestion(); 
+    renderCounter();
+    TIMER = setInterval(renderCounter,1000);
+   }
+  //Render question
+function renderQuestion() {
+    let q = questions[runningQuestion];
+    question.innerHTML ="<p>"+ q.question +"</p>"; 
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML =  q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
 }
 
-function setNextQuestion() {
-    resetState()
-    showQuestion(shuffledQuestions[currentQuestionIndex])
+function renderCounter() {
+    if(count <= questionTime){
+        counter.innerHTML = count;
+        timeGauge.style.width = count * gaugeUnit + "px";
+        count++
+    }else{
+       count = 0;
     }
-
-function showQuestion(question) {
- questionElement.innerText = question.question
- question.answers.forEach(answer => {
- var button = document.createElement('button')
- button.innerText = answer.text
- button.classList.add('btn')
- if (answer.correct) {
-     button.dataset.correct = answer.correct
- }
- button.addEventListener('click', selectAnswer)
- })
-}
-function resetState() {
-    nextButton.classList.add('hide')
-} 
-
-function selectAnswer(e){
-    var selectedButton = e.target
-    var correct =  selectedButton.dataset.correct
-    setStatusClass(document.body, correct)
-    Array.from(answerButtonsElement.children).forEach(button => {
-        setStatusClass(button,dataset.correct)
-    })
-    nextButton.classList.remove('hide')
 }
 
+// Create variables  
+var lastQuestion = questions.length-1;
+var runningQuestion = 0;
+var counter = 0;
+var questionTime = 10;
+var gaugeWidth = 150;
+var gaugeUnit = gaugeWidth / questionTime;
+var Timer;
 
-    function setStatusClass(element, correct) {
-       clearStatusClass(element)
-       if (correct) {
-           element.classList.add('correct')
-       } else {
-           element.classList.add('wrong')
-       }
-    }
 
 
-function clearStatusClass(element, correct) {
-    element.classList.add('correct')
-    element.classList.add('wrong')
- }
- 
  // Quiz questions
-var questions = [
+     var questions = [
     {
         question: 'Inside which HTML element do we put the JavaScript?',
              choiceA: '<js>', 
@@ -115,3 +93,11 @@ var questions = [
            correct: "A"  
     }
 ];
+
+
+
+
+
+
+
+

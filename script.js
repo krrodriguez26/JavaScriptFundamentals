@@ -1,8 +1,16 @@
-var  startButton = document.getElementById('start-btn')
-var  nextButton = document.getElementById('next-btn')
-var questionContainerElement = document.getElementById('question-container')
-var questionElement = document.getElementById('question')
-var answerButtonsElement = document.getElementById('answer-buttons')
+// Elements selected
+var  startButton = document.getElementById("start-btn");
+var  nextButton = document.getElementById("next-btn");
+var questionContainerElement = document.getElementById("question-container");
+var questionElement = document.getElementById("question");
+var answerButtonsElement = document.getElementById("answer-choices");
+var choiceA = document.getElementById("A");
+var choiceB = document.getElementById("B");
+var choiceC = document.getElementById("C");
+var choiceD = document.getElementById("D");
+var counter = document.getElementById("counter");
+var timeGauge = document.getElementById("timeGauge");
+var scoreDiv = document.getElementById("score");
 
 var shuffledQuestions, currentQuestionIndex 
 
@@ -67,67 +75,43 @@ function clearStatusClass(element, correct) {
     element.classList.add('wrong')
  }
  
+ // Quiz questions
 var questions = [
     {
         question: 'Inside which HTML element do we put the JavaScript?',
-        answers: [
-            { text: '<js>', correct: false },
-            { text: '<scripting>', correct: false },
-            { text: '<script>', correct: true }, 
-            { text: '<javascriptt>', correct: false }
-        ]
-        
-    }
-]
-
-var questions = [
-    {
+             choiceA: '<js>', 
+             choiceB: '<scripting>', 
+             choiceC: '<script>', 
+             choiceD: '<javascriptt>', 
+             correct: "C" 
+   
+    },{
         question: 'Where is the correct place to insert a JavaScript?',
-        answers: [
-            { text: 'Both the <head> section and the <body> section are correct' , correct: true },
-            { text: 'The <body> section ', correct: false },
-            { text: 'The <head> section', correct: false }, 
-            { text: 'All of the above', correct: false }
-        ]
-        
-    }
-]
-
-var questions = [
-    {
+            choiceA: 'Both the <head> section and the <body> section are correct' , 
+            choiceB: 'The <body> section ', 
+            choiceC: 'The <head> section',  
+            choiceD:'All of the above',  
+            correct: "A"  
+    },{
         question: 'Which event occurs when the user clicks on an HTML element?',
-        answers: [
-            { text: 'onclick' , correct: true },
-            { text: 'onmouseover', correct: false },
-            { text: 'onchange', correct: false }, 
-            { text: 'onmouseclick', correct: false }
-        ]
-        
-    }
-]
-
-var questions = [
-    {
+           choiceA:'onclick' , 
+           choiceB: 'onmouseover', 
+           choiceC:'onchange',  
+           choiceD: 'onmouseclick', 
+           correct: "A"
+    },{
         question: 'What is the correct way to write a JavaScript array?',
-        answers: [
-            { text: 'var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")' , correct: false},
-            { text: 'var colors = ["red", "green", "blue"]  ', correct: true },
-            { text: 'var colors = (1:"red", 2:"green", 3:"blue")', correct: false }, 
-            { text: 'var colors = "red", "green", "blue"', correct: false }
-        ]
-        
-    }
-]
-
-var questions = [
-    {
+          choiceA: 'var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")' , 
+          choiceB: 'var colors = ["red", "green", "blue"]  ', 
+          choiceC: 'var colors = (1:"red", 2:"green", 3:"blue")', 
+          choiceD: 'var colors = "red", "green", "blue"', 
+          correct: "B" 
+    },{
         question: 'How do you create a function in JavaScript?',
-        answers: [
-            { text: 'function myFunction()' , correct: true},
-            { text: 'function = myFunction()', correct: false},
-            { text: 'function:myFunction()', correct: false},
-            { text: 'All of the above', correct: false},
-        ]
-        
+           choiceA:'function myFunction()' , 
+           choiceB: 'function = myFunction()', 
+           choiceC:'function:myFunction()', 
+           choiceD:'All of the above', 
+           correct: "A"  
     }
-]
+];

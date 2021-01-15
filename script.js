@@ -6,14 +6,14 @@ var answerButtonsElement = document.getElementById('answer-buttons')
 
 var shuffledQuestions, currentQuestionIndex 
 
-function startQuiz() {
- console.log('Started')   
+function startQuiz() { 
  startButton.classList.add('hide')
  shuffledQuestions = questions.sort(() => Math.random() - .5)
  currentQuestionIndex = 0
  questionContainerElement.classList.remove('hide')
  startButton.addEventListener('click', startQuiz)
  setNextQuestion()
+
 }
 
 function setNextQuestion() {
@@ -42,7 +42,18 @@ function resetState() {
     }
 } 
 
-function selectAnswer(){
+function selectAnswer(e){
+    var selectedButton = e.target
+    var correct =  selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button,dataset.correct)
+    })
+
+
+    function setStatusClass(element, correct) {
+       clearStatusClass(element)
+    }
 
 }
  

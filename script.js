@@ -35,15 +35,10 @@ function showQuestion(question) {
      button.dataset.correct = answer.correct
  }
  button.addEventListener('click', selectAnswer)
- answerButtonsElement.appendChild(button)
  })
 }
 function resetState() {
     nextButton.classList.add('hide')
-    while (answerButtonsElement.firstChild) {
-        answerButtonsElement.removeChild
-        (answerButtonsElement.firstChild)
-    }
 } 
 
 function selectAnswer(e){
@@ -113,10 +108,12 @@ var questions = [
 
 var questions = [
     {
-        question: 'The external JavaScript file must contain the <script> tag?',
+        question: 'What is the correct way to write a JavaScript array?',
         answers: [
-            { text: 'True' , correct: false},
-            { text: 'False', correct: true },
+            { text: 'var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")' , correct: false},
+            { text: 'var colors = ["red", "green", "blue"]  ', correct: true },
+            { text: 'var colors = (1:"red", 2:"green", 3:"blue")', correct: false }, 
+            { text: 'var colors = "red", "green", "blue"', correct: false }
         ]
         
     }
@@ -129,6 +126,7 @@ var questions = [
             { text: 'function myFunction()' , correct: true},
             { text: 'function = myFunction()', correct: false},
             { text: 'function:myFunction()', correct: false},
+            { text: 'All of the above', correct: false},
         ]
         
     }

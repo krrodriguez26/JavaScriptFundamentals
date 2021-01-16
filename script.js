@@ -32,8 +32,16 @@ function renderQuestion() {
     choiceD.innerHTML = q.choiceD;
 }
 
-function renderCounter() {
-    if(count = 0 <= questionTime){
+// Counter render
+     var count = 0;
+     var questionTime = 10;
+     var gaugeWidth = 150;
+     var gaugeUnit = gaugeWidth / questionTime;
+     var Timer;
+     var score = 0;
+     
+      function renderCounter() {
+    if(count <= questionTime) {
         counter.innerHTML = count;
         timeGauge.style.width = count * gaugeUnit + "px";
         count++
@@ -41,16 +49,6 @@ function renderCounter() {
        count = 0;
     }
 }
-
-   // Create variables  
-     var runningQuestion = 0;
-     var counter = 0;
-     var questionTime = 10;
-     var gaugeWidth = 150;
-     var gaugeUnit = gaugeWidth / questionTime;
-     var Timer;
-
-
 
    // Quiz questions
      var question = [
@@ -96,5 +94,15 @@ function renderCounter() {
      // For loops to loop through all info in array
      for (var i = 0; i < question.length; i++) {
     
+    }
+
+    // Check answer
+    function checkAnswer (answer) {
+        if (answer == question[runningQuestion].correct){
+            //Answer is correct
+            score++;
+        }else{
+            //answer is wrong
+        }
     }
    

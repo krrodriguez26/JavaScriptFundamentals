@@ -3,35 +3,48 @@ var  startButton = document.getElementById("start-btn");
 var  nextButton = document.getElementById("next-btn");
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
-var runningQuestion = document.getElementById("running question");
-var choiceA = document.getElementById("A");
-var choiceB = document.getElementById("B");
-var choiceC = document.getElementById("C");
-var choiceD = document.getElementById("D");
+var answerButtonsElement = document.getElementById("answer-buttons");
 var counter = document.getElementById("counter");
 var timeGauge = document.getElementById("timeGauge");
 var scoreDiv = document.getElementById("score");
+let shuffledQuestions, currentQuestionIndex
 
 
 startButton.addEventListener("click", startQuiz);
+nextButton.addEventListener("click", () => {
+    currentQuestionIndex++
+    setNextQuestion()
+})
 
 // Start quiz
    function startQuiz(){
-    startButton.style.display = "none";
-    renderQuestion(); 
-    renderCounter();
-    TIMER = setInterval(renderCounter,1000);
+    startButton.classList.add("hide")
+    shuffledQuestions = question.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
+    questionContainerElement.classList.remove("hide")
+    setNextQuestion()
+    renderCounter()
+    TIMER = setInterval(renderCounter,1000)
    }
 
-  //Render question
-function renderQuestion() {
-    var q = question [runningQuestion];
-    question.innerHTML ="<p>"+ q.question + "</p>"; 
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
-}
+ // Next question
+    function setNextQuestion() {
+      showQuestion(shuffledQuestions[currentQuestionIndex])
+    }
+
+    function showQuestion(question){
+       
+    }
+
+    function selectAnswer() {
+      var selectedButton = event.target.className
+      var correct = selectedButton.dataset.correct
+      setStatusClass(document.body, correct)
+      Array.from(answerButtonsElement.children).forEach(button => {
+          setStatusClass(button, button.dataset.correct)
+      })
+      nextButton.classList.remove("hide")
+    }
 
 // Counter render
      var count = 0;
@@ -40,6 +53,7 @@ function renderQuestion() {
      var gaugeUnit = gaugeWidth / questionTime;
      var Timer;
      var score = 0;
+    
 
       function renderCounter() {
     if(count <= questionTime) {
@@ -53,57 +67,48 @@ function renderQuestion() {
 
    // Quiz questions
      var question = [
+        
     {
         question: 'Inside which HTML element do we put the JavaScript?',
-             choiceA: '<js>', 
-             choiceB: '<scripting>', 
-             choiceC: '<script>', 
-             choiceD: '<javascriptt>', 
-             correct: "C" 
+             Answer: '<js>', correct: false, 
+             Answer: '<scripting>', correct: false, 
+             Answer: '<script>', correct: true,
+             Answer: '<javascriptt>', correct: false, 
+             
    
     },{
         question: 'Where is the correct place to insert a JavaScript?',
-            choiceA: 'Both the <head> section and the <body> section are correct' , 
-            choiceB: 'The <body> section ', 
-            choiceC: 'The <head> section',  
-            choiceD:'All of the above',  
-            correct: "A"  
+            Answer: 'Both the <head> section and the <body> section are correct', correct: true  , 
+            Answer: 'The <body> section ', correct: false, 
+            Answer: 'The <head> section',correct: false,  
+            Answer:'All of the above',correct: false,  
+           
     },{
         question: 'Which event occurs when the user clicks on an HTML element?',
-           choiceA:'onclick' , 
-           choiceB: 'onmouseover', 
-           choiceC:'onchange',  
-           choiceD: 'onmouseclick', 
-           correct: "A"
+            Answer:'onclick',correct: true  , 
+            Answer: 'onmouseover',correct: false, 
+            Answer:'onchange',correct: false,  
+            Answer: 'onmouseclick',correct: false, 
+           
     },{
         question: 'What is the correct way to write a JavaScript array?',
-          choiceA: 'var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")' , 
-          choiceB: 'var colors = ["red", "green", "blue"]  ', 
-          choiceC: 'var colors = (1:"red", 2:"green", 3:"blue")', 
-          choiceD: 'var colors = "red", "green", "blue"', 
-          correct: "B" 
+          Answer: 'var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")' , correct: false, 
+          Answer: 'var colors = ["red", "green", "blue"]  ', correct: true, 
+          Answer: 'var colors = (1:"red", 2:"green", 3:"blue")', correct: false, 
+          Answer: 'var colors = "red", "green", "blue"', correct: false, 
+          
     },{
         question: 'How do you create a function in JavaScript?',
-           choiceA:'function myFunction()' , 
-           choiceB: 'function = myFunction()', 
-           choiceC:'function:myFunction()', 
-           choiceD:'All of the above', 
-           correct: "A"  
+            Answer:'function myFunction()' , correct: true,  
+            Answer: 'function = myFunction()', correct: false, 
+            Answer:'function:myFunction()', correct: false, 
+            Answer:'All of the above', correct: false, 
+            
     }
 ];
 
-     // For loops to loop through all info in array
-     for (var i = 0; i < question.length; i++) {
     
-    }
+     
 
-    // Check answer
-    function checkAnswer (answer) {
-        if (answer == question[runningQuestion].correct){
-            //Answer is correct
-            score++;
-        }else{
-            //answer is wrong
-        }
-    }
+    
    

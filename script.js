@@ -3,6 +3,7 @@ var  startButton = document.getElementById("start-btn");
 var  nextButton = document.getElementById("next-btn");
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
+var runningQuestion = document.getElementById("running question");
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
@@ -39,7 +40,7 @@ function renderQuestion() {
      var gaugeUnit = gaugeWidth / questionTime;
      var Timer;
      var score = 0;
-     
+
       function renderCounter() {
     if(count <= questionTime) {
         counter.innerHTML = count;

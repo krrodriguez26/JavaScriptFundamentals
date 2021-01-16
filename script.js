@@ -33,17 +33,19 @@ nextButton.addEventListener("click", () => {
     }
 
     function showQuestion(question){
-       
+        console.log(question)
+       questionElement.innerText = question.question
+
     }
 
     function selectAnswer() {
-      var selectedButton = event.target.className
-      var correct = selectedButton.dataset.correct
-      setStatusClass(document.body, correct)
-      Array.from(answerButtonsElement.children).forEach(button => {
-          setStatusClass(button, button.dataset.correct)
-      })
-      nextButton.classList.remove("hide")
+        var selectedButton = e.target
+        var correct = selectedButton.dataset.correct
+        setStatusClass(document.body, correct)
+        Array.from(answerButtonsElement.children).forEach(button => {
+            setStatusClass(button, button.dataset.correct)
+   })
+        nextButton.classList.remove("hide")
     }
 
 // Counter render
@@ -69,41 +71,36 @@ nextButton.addEventListener("click", () => {
      var question = [
         
     {
-        question: 'Inside which HTML element do we put the JavaScript?',
-             Answer: '<js>', correct: false, 
-             Answer: '<scripting>', correct: false, 
-             Answer: '<script>', correct: true,
-             Answer: '<javascriptt>', correct: false, 
+        question:"Inside which HTML element do we put the JavaScript?",
+             choices:["<js>", "<scripting>", "<script>", "<javascriptt>",],
+             // answer should have matching string from choices
+             answer:"<script>"
+         },
              
-   
-    },{
-        question: 'Where is the correct place to insert a JavaScript?',
-            Answer: 'Both the <head> section and the <body> section are correct', correct: true  , 
-            Answer: 'The <body> section ', correct: false, 
-            Answer: 'The <head> section',correct: false,  
-            Answer:'All of the above',correct: false,  
-           
-    },{
+             {
+        question:"Where is the correct place to insert a JavaScript?",
+        choices:["Both the <head> and the <body>", "The <body> section", "The <head> section","All of the above"],
+           // answer should have matching string from choices
+           answer:"Both the <head> and the <body>"      
+    },
+    {
         question: 'Which event occurs when the user clicks on an HTML element?',
-            Answer:'onclick',correct: true  , 
-            Answer: 'onmouseover',correct: false, 
-            Answer:'onchange',correct: false,  
-            Answer: 'onmouseclick',correct: false, 
-           
-    },{
-        question: 'What is the correct way to write a JavaScript array?',
-          Answer: 'var colors = 1 = ("red"), 2 = ("green"), 3 = ("blue")' , correct: false, 
-          Answer: 'var colors = ["red", "green", "blue"]  ', correct: true, 
-          Answer: 'var colors = (1:"red", 2:"green", 3:"blue")', correct: false, 
-          Answer: 'var colors = "red", "green", "blue"', correct: false, 
-          
-    },{
+        choices:["onclick","onmouseover","onchange","onmouseclick",],
+         // answer should have matching string from choices
+        answer:"onclick"   
+    },
+    {
+        question: "JavaScript is the same as Java?",
+        choices:["True", "False"],
+         // answer should have matching string from choices
+        answer: "False"     
+    },
+    {
         question: 'How do you create a function in JavaScript?',
-            Answer:'function myFunction()' , correct: true,  
-            Answer: 'function = myFunction()', correct: false, 
-            Answer:'function:myFunction()', correct: false, 
-            Answer:'All of the above', correct: false, 
-            
+        choices:["function:myFunction()", "function = myFunction()","function myFunction()", "All of the above"],
+         // answer should have matching string from choices
+        answer: "function myFunction()"
+              
     }
 ];
 

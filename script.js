@@ -3,7 +3,6 @@ var  startButton = document.getElementById("start-btn");
 var  nextButton = document.getElementById("next-btn");
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
-var answerButtonsElement = document.getElementById("answer-choices");
 var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
@@ -22,18 +21,19 @@ startButton.addEventListener("click", startQuiz);
     renderCounter();
     TIMER = setInterval(renderCounter,1000);
    }
+
   //Render question
 function renderQuestion() {
-    let q = questions[runningQuestion];
-    question.innerHTML ="<p>"+ q.question +"</p>"; 
+    var q = question [runningQuestion];
+    question.innerHTML ="<p>"+ q.question + "</p>"; 
     choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML =  q.choiceB;
+    choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
     choiceD.innerHTML = q.choiceD;
 }
 
 function renderCounter() {
-    if(count <= questionTime){
+    if(count = 0 <= questionTime){
         counter.innerHTML = count;
         timeGauge.style.width = count * gaugeUnit + "px";
         count++
@@ -42,19 +42,18 @@ function renderCounter() {
     }
 }
 
-// Create variables  
-var lastQuestion = questions.length-1;
-var runningQuestion = 0;
-var counter = 0;
-var questionTime = 10;
-var gaugeWidth = 150;
-var gaugeUnit = gaugeWidth / questionTime;
-var Timer;
+   // Create variables  
+     var runningQuestion = 0;
+     var counter = 0;
+     var questionTime = 10;
+     var gaugeWidth = 150;
+     var gaugeUnit = gaugeWidth / questionTime;
+     var Timer;
 
 
 
- // Quiz questions
-     var questions = [
+   // Quiz questions
+     var question = [
     {
         question: 'Inside which HTML element do we put the JavaScript?',
              choiceA: '<js>', 
@@ -94,10 +93,8 @@ var Timer;
     }
 ];
 
-
-
-
-
-
-
-
+     // For loops to loop through all info in array
+     for (var i = 0; i < question.length; i++) {
+    
+    }
+   

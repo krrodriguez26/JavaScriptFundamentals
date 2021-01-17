@@ -4,6 +4,11 @@ var  nextButton = document.getElementById("next-btn");
 var questionContainerElement = document.getElementById("question-container");
 var questionElement = document.getElementById("question");
 var answerButtonsElement = document.getElementById("answer-buttons");
+var ul = document.getElementById("ul");
+var choice1 = document.getElementById("choice1");
+var choice2 = document.getElementById("choice2");
+var choice3 = document.getElementById("choice3");
+var choice4 = document.getElementById("choice4");
 var counter = document.getElementById("counter");
 var timeGauge = document.getElementById("timeGauge");
 var scoreDiv = document.getElementById("score");
@@ -30,14 +35,16 @@ nextButton.addEventListener("click", () => {
  // Next question
     function setNextQuestion() {
       showQuestion(shuffledQuestions[currentQuestionIndex])
+    
     }
 
     function showQuestion(question){
-        console.log(question)
        questionElement.innerText = question.question
+      
+   
 
     }
-
+   
     function selectAnswer() {
         var selectedButton = e.target
         var correct = selectedButton.dataset.correct
@@ -75,8 +82,7 @@ nextButton.addEventListener("click", () => {
              choices:["<js>", "<scripting>", "<script>", "<javascriptt>",],
              // answer should have matching string from choices
              answer:"<script>"
-         },
-             
+         },  
              {
         question:"Where is the correct place to insert a JavaScript?",
         choices:["Both the <head> and the <body>", "The <body> section", "The <head> section","All of the above"],

@@ -1,19 +1,52 @@
 // Elements selected
-var  startButton = document.getElementById("start-btn");
-var  nextButton = document.getElementById("next-btn");
-var questionContainerElement = document.getElementById("question-container");
-var questionElement = document.getElementById("question");
-var answerButtonsElement = document.getElementById("answer-buttons");
-var ul = document.getElementById("ul");
-var choice1 = document.getElementById("choice1");
-var choice2 = document.getElementById("choice2");
-var choice3 = document.getElementById("choice3");
-var choice4 = document.getElementById("choice4");
-var counter = document.getElementById("counter");
-var timeGauge = document.getElementById("timeGauge");
-var scoreDiv = document.getElementById("score");
+const startButton = document.getElementById("start-btn");
+const  nextButton = document.getElementById("next-btn");
+const questionContainerElement = document.getElementById("question-container");
+const questionElement = document.getElementById("question");
+const answerButtonsElement = document.getElementById("answer-buttons");
+const timeGauge = document.getElementById("timeGauge");
+const scoreDiv = document.getElementById("score");
 let shuffledQuestions, currentQuestionIndex
 
+
+   // Quiz questions
+     const question = [
+        
+    {
+        question:"Inside which HTML element do we put the JavaScript?",
+             answers:["<js>", "<scripting>", "<script>", "<javascriptt>",],
+             // answer should have matching string from choices
+             correct:"<script>"
+    },  
+    {
+        question:"Where is the correct place to insert a JavaScript?",
+        answers:["Both the <head> and the <body>", "The <body> section", "The <head> section","All of the above"],
+           // answer should have matching string from choices
+           correct:"Both the <head> and the <body>"      
+    },
+    {
+        question: 'Which event occurs when the user clicks on an HTML element?',
+        answers:["onclick","onmouseover","onchange","onmouseclick",],
+         // answer should have matching string from choices
+         correct:"onclick"   
+     },
+    {
+        question: "JavaScript is the same as Java?",
+        answers:["True", "False"],
+         // answer should have matching string from choices
+         correct: "False"     
+    },
+    {
+        question: 'How do you create a function in JavaScript?',
+        answers:["function:myFunction()", "function = myFunction()","function myFunction()", "All of the above"],
+         // answer should have matching string from choices
+        correct: "function myFunction()"   
+           
+    }
+];
+
+
+var questionIndex = 0;
 
 startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", () => {
@@ -35,19 +68,31 @@ nextButton.addEventListener("click", () => {
  // Next question
     function setNextQuestion() {
       showQuestion(shuffledQuestions[currentQuestionIndex])
-    
     }
 
     function showQuestion(question){
        questionElement.innerText = question.question
-      
-   
-
+       question.answers.forEach(answer => {
+           const button = document.createElement ("button")
+           button.innerText = answer.text 
+           button.classList.add("btn")
+           if (answer.correct) {
+               button.daraset.correct = answer.correct
+           }
+           button.addEventListener("click", selectAnswer) 
+           answerButtonsElement.appendChild(button)
+       })
+    } 
+    function resetState(){
+        nextButton.classList.add("hide")
+        while (answerButtonsElement.firstChild) {
+            answerButtonsElement.removeChild
+            (answerButtonsElement.firstChild)
+        }
     }
-   
-    function selectAnswer() {
-        var selectedButton = e.target
-        var correct = selectedButton.dataset.correct
+    function selectAnswer(e) {
+        const selectedButton = e.target
+        const correct = selectedButton.dataset.correct
         setStatusClass(document.body, correct)
         Array.from(answerButtonsElement.children).forEach(button => {
             setStatusClass(button, button.dataset.correct)
@@ -55,7 +100,28 @@ nextButton.addEventListener("click", () => {
         nextButton.classList.remove("hide")
     }
 
-// Counter render
+    function setStatusClass(element, correct){
+       clearStatusClass(element)
+       if (correct) {
+           element.classList.add("correct")
+       }else{
+          element.classList.add("wrong") 
+       }
+    }
+
+    function clearStatusClass(element){
+         element.classList.remove("correct")
+         element.classList.remove("wrong")
+    }
+    
+    // Render questions and answers
+    function render(questionIndex){
+    for(let i=0; i< question.length; i++) {
+        var question = question[questionIndex].question
+        var answers = question[questionIndex].answers
+    }
+
+    // Counter render
      var count = 0;
      var questionTime = 10;
      var gaugeWidth = 150;
@@ -73,45 +139,3 @@ nextButton.addEventListener("click", () => {
        count = 0;
     }
 }
-
-   // Quiz questions
-     var question = [
-        
-    {
-        question:"Inside which HTML element do we put the JavaScript?",
-             choices:["<js>", "<scripting>", "<script>", "<javascriptt>",],
-             // answer should have matching string from choices
-             answer:"<script>"
-         },  
-             {
-        question:"Where is the correct place to insert a JavaScript?",
-        choices:["Both the <head> and the <body>", "The <body> section", "The <head> section","All of the above"],
-           // answer should have matching string from choices
-           answer:"Both the <head> and the <body>"      
-    },
-    {
-        question: 'Which event occurs when the user clicks on an HTML element?',
-        choices:["onclick","onmouseover","onchange","onmouseclick",],
-         // answer should have matching string from choices
-        answer:"onclick"   
-    },
-    {
-        question: "JavaScript is the same as Java?",
-        choices:["True", "False"],
-         // answer should have matching string from choices
-        answer: "False"     
-    },
-    {
-        question: 'How do you create a function in JavaScript?',
-        choices:["function:myFunction()", "function = myFunction()","function myFunction()", "All of the above"],
-         // answer should have matching string from choices
-        answer: "function myFunction()"
-              
-    }
-];
-
-    
-     
-
-    
-   

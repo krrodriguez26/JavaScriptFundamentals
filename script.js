@@ -6,7 +6,11 @@ const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const timeGauge = document.getElementById("timeGauge");
 const scoreDiv = document.getElementById("score");
+const submitButton = document.getElementById("submit-button");
+const finalScore = document.getElementById("final-score");
+const mostRecentScore = localStorage.getElementById("mostRecentScore");
 let shuffledQuestions, currentQuestionIndex
+finalScore.innerText = mostRecentScore
 
 
    // Quiz questions
@@ -76,7 +80,6 @@ nextButton.addEventListener("click", () => {
     setNextQuestion()
     renderCounter()
     TIMER = setInterval(renderCounter,1000)
-    let score = 0;
    }
 
  // Next question
@@ -117,10 +120,15 @@ nextButton.addEventListener("click", () => {
    if (shuffledQuestions.length > currentQuestionIndex + 1){
        nextButton.classList.remove("hide")
       } else {
-          startButton.innerText = "Restart"
+          startButton.innerText = ("Submit")
           startButton.classList.remove("hide")
        }
    }
+   
+   function submitQuiz(){
+
+   }
+
         
     function setStatusClass(element, correct){
        clearStatusClass(element)
@@ -136,23 +144,6 @@ nextButton.addEventListener("click", () => {
          element.classList.remove("wrong")
     }
 
-    //Check answer
-    function checkAnswer(answer){
-        if( answer == question [questionIndex].correct) {
-            // answer is correct
-          score++ 
-        } else {
-            // answer is wrong
-            // change button color to red
-        }
-    }
-     
-    // answer is correct
-    function answerIsCorrect(){
-        document.getElementById(questionIndex).style.backgroundColor ="#green";
-    }
-     
- 
     // Counter render
      var count = 0;
      var questionTime = 10;
@@ -178,3 +169,4 @@ function render(questionIndex){
         var answers = question[questionIndex].answers
     }
 }
+

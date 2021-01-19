@@ -38,6 +38,17 @@ body.wrong {
     box-shadow: 0 0 10px 2px;
 }
 
+.hud{
+    display: flex;
+    justify-content: space-between;
+}
+
+.hud-prefix{
+text-align: center;
+}
+
+
+
 .btn-grid {
    display: grid;
    grid-template-columns: repeat(4, auto);

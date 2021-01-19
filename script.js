@@ -6,11 +6,8 @@ const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const timeGauge = document.getElementById("timeGauge");
 const scoreDiv = document.getElementById("score");
-const submitButton = document.getElementById("submit-button");
-const finalScore = document.getElementById("final-score");
-const mostRecentScore = localStorage.getElementById("mostRecentScore");
 let shuffledQuestions, currentQuestionIndex
-finalScore.innerText = mostRecentScore
+
 
 
    // Quiz questions
@@ -120,13 +117,12 @@ nextButton.addEventListener("click", () => {
    if (shuffledQuestions.length > currentQuestionIndex + 1){
        nextButton.classList.remove("hide")
       } else {
-          startButton.innerText = ("Submit")
           startButton.classList.remove("hide")
        }
    }
    
    function submitQuiz(){
-
+     
    }
 
         

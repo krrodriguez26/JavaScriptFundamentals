@@ -11,7 +11,26 @@
 </head>
 <body>
     <div class="container">
-        <div id="end" class="flex-center flex-column"></div>
+        <div id="end" class="flex-center flex-column">
+            <h1 id="finalscore"></h1>
+            <form>
+            <input
+            type="Text"
+            name="HighScore"
+            id="highscore"
+            placeholder="highscore"
+            >
+            </form> 
+            <form>
+                <input
+               type="Text" 
+               name="Username"
+               id="username"
+               placeholder ="username"
+            >
+            <button type="submit" class="btn" id="saveScoreBtn" onclick="saveHighScore(event)"disabled>Save</button>
+            </form>
+        </div>
     </div>
  
  

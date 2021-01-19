@@ -1,14 +1,12 @@
 // Elements selected
 const startButton = document.getElementById("start-btn");
 const  nextButton = document.getElementById("next-btn");
+const  submitButton = document.getElementById("submit-btn");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const timeGauge = document.getElementById("timeGauge");
-const scoreDiv = document.getElementById("score");
 let shuffledQuestions, currentQuestionIndex
-
-
 
    // Quiz questions
      const question = [
@@ -59,8 +57,9 @@ let shuffledQuestions, currentQuestionIndex
     }
 ];
 
-var score= 0;
+
 var questionIndex = 0;
+
 
 startButton.addEventListener("click", startQuiz);
 nextButton.addEventListener("click", () => {
@@ -77,6 +76,7 @@ nextButton.addEventListener("click", () => {
     setNextQuestion()
     renderCounter()
     TIMER = setInterval(renderCounter,1000)
+    
    }
 
  // Next question
@@ -113,19 +113,16 @@ nextButton.addEventListener("click", () => {
         setStatusClass(document.body, correct)
         Array.from(answerButtonsElement.children).forEach(button => {
             setStatusClass(button, button.dataset.correct)
+
    })
    if (shuffledQuestions.length > currentQuestionIndex + 1){
        nextButton.classList.remove("hide")
       } else {
+        startButton.classList.remove("hide")
           startButton.classList.remove("hide")
        }
    }
-   
-   function submitQuiz(){
-     
-   }
-
-        
+    
     function setStatusClass(element, correct){
        clearStatusClass(element)
        if (correct) {
@@ -146,7 +143,6 @@ nextButton.addEventListener("click", () => {
      var gaugeWidth = 150;
      var gaugeUnit = gaugeWidth / questionTime;
      var Timer;
-     var score = 0;
     
       function renderCounter(){
     if(count <= questionTime) {

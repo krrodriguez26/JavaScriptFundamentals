@@ -19,7 +19,8 @@ Configuration:  Using HTML, CSS, and JavaScript I was able to create a multiple 
 
 Quiz questions were taken from W3Schools: https://www.w3schools.com/quiztest/result.asp
 
-Deployed link: 
+Deployed link: https://krrodriguez26.github.io/JavaScriptFundamentals/
 
 Screenshots:
 ![alt text](https://github.com/krrodriguez26/JavaScriptFundamentals/blob/main/assets/Screen%20Shot%202021-01-18%20at%209.28.24%20PM.png)
+

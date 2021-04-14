@@ -1,7 +1,7 @@
 # JavaScriptFundamentals
 
-# Project Description: T
-his weeks project is focused on  building a timed coding quiz with multiple-choice questions, along with a highscore feature in which the player will be able to to save their highscore.
+# Project Description: 
+This weeks project is focused on  building a timed coding quiz with multiple-choice questions, along with a highscore feature in which the player will be able to to save their highscore.
 
 # Requirements:  
 GIVEN I am taking a code quiz
